@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        if(!p && !q){
+            return true;
+        }
+        if(p && q && p->val == q->val){
+            return isSameTree(p->left , q->left)&& isSameTree(p->right,q->right);
+        }
+        return false;
+    }
+};
+In this code we have to analyize , is 2 trees are the same or not 
+1)Check if both trees are empty (both p and q are None)
+2)Check if both trees are non-empty and have the same root value
