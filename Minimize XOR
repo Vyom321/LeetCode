@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int minimizeXor(int num1, int num2) {
+        int cnt = __builtin_popcountll(num2); 
+        int x = 0;
+        for (int bit = 31; bit >= 0; bit--) {
+            int mask = 1ll << bit;
+            if (mask & num1) {
+                if (cnt > 0) {
+                    x += mask;
+                    --cnt;
+                }
+            }
+        }
+        for (int bit = 0; bit < 32; bit++) {
+            int mask = 1ll << bit;
+            if (!(mask & x)) {
+                if (cnt > 0) {
+                    x += mask;
+                    --cnt;
+                }
+            }
+        }
+
+        return x;
+    }
+};
